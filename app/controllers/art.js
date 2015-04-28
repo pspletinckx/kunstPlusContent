@@ -4,14 +4,15 @@ var express = require('express'),
   Article = mongoose.model('Article');
 
 module.exports = function (app) {
-  app.use('/', router);
+  app.use('/art', router);
 };
 
 router.get('/', function (req, res, next) {
   Article.find(function (err, articles) {
     if (err) return next(err);
-    res.render('index', {
-      title: 'Generator-Express MVC',
+    res.render('art', {
+      title: 'Duiven in Mausoleum van Galla Placidia',
+      author: 'onbekend',
       articles: articles
     });
   });
